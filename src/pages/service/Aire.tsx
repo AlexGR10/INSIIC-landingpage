@@ -16,15 +16,14 @@ import { motion, easeOut } from "framer-motion";
 const MotionCard = motion(Card);
 const MotionBox = motion(Box);
 
-const fadeInFrom = (direction: "left" | "right", delay = 0) => ({
+const fadeInFrom = (direction: "left" | "right") => ({
     hidden: { opacity: 0, x: direction === "left" ? -50 : 50 },
     visible: {
         opacity: 1,
         x: 0,
         transition: {
             duration: 0.6,
-            ease: easeOut,
-            delay: 0.2
+            ease: easeOut
         }
     },
 });
@@ -65,7 +64,7 @@ const ServiceUno = () => {
                 <MotionBox
                     initial="hidden"
                     animate="visible"
-                    variants={fadeInFrom("right", 0.1)}
+                    variants={fadeInFrom("right")}
                 >
                     <Typography
                         variant="h4"
@@ -82,7 +81,7 @@ const ServiceUno = () => {
                     <MotionCard
                         initial="hidden"
                         animate="visible"
-                        variants={fadeInFrom("left", 0.2)}
+                        variants={fadeInFrom("left")}
                         sx={{
                             flex: "1 1 300px",
                             maxWidth: 500,
@@ -121,7 +120,7 @@ const ServiceUno = () => {
                     <MotionCard
                         initial="hidden"
                         animate="visible"
-                        variants={fadeInFrom("right", 0.3)}
+                        variants={fadeInFrom("right")}
                         sx={{
                             flex: "1 1 300px",
                             maxWidth: 500,
@@ -162,7 +161,7 @@ const ServiceUno = () => {
                     <MotionBox
                         initial="hidden"
                         animate="visible"
-                        variants={fadeInFrom("left", 0.1)}
+                        variants={fadeInFrom("left")}
                     >
                         <Typography
                             variant="h4"
@@ -179,7 +178,7 @@ const ServiceUno = () => {
                         <MotionCard
                             initial="hidden"
                             animate="visible"
-                            variants={fadeInFrom("left", 0.2)}
+                            variants={fadeInFrom("left")}
                             sx={{
                                 flex: "1 1 300px",
                                 maxWidth: 500,
@@ -217,7 +216,7 @@ const ServiceUno = () => {
                         <MotionCard
                             initial="hidden"
                             animate="visible"
-                            variants={fadeInFrom("right", 0.3)}
+                            variants={fadeInFrom("right")}
                             sx={{
                                 flex: "1 1 300px",
                                 maxWidth: 500,
