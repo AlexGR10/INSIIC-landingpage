@@ -7,4 +7,5 @@ export default defineConfig({
     host: true,   // <--- importante
     port: 5173,   // puedes cambiarlo si quieres
   },
+  base: './'
 })
