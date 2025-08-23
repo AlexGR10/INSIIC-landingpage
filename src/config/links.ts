@@ -3,7 +3,8 @@ const LINKS = {
 
   SISTEMAS_DE_AIRE: "/service/aire",
   EQUIPOS_DE_SUPRESION: "/service/supresion",
-  REDES_CONTRA_INCENDIO: "/service/incendio"
+  REDES_CONTRA_INCENDIO: "/service/incendio",
+  CONTACTO: "#"
 };
 
 export default LINKS;
