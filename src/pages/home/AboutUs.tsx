@@ -2,7 +2,7 @@ import { Box, Typography, Card, useTheme } from "@mui/material";
 import LogoNFPA from "../../assets/images/certificados/NFPA.png";
 import LogoREPSE from "../../assets/images/certificados/repse.jfif";
 import LogoSTPS from "../../assets/images/certificados/STPS.jfif";
-import LogoAnsul from "../../assets/images/certificados/ansul.png";
+import LogoAnsul from "../../assets/images/certificados/ANSUL.png";
 
 const AboutUs = () => {
   const theme = useTheme();
