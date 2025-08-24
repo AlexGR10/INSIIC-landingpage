@@ -12,6 +12,7 @@ import WaterIcon from "@mui/icons-material/Water";
 import CleanHandsIcon from "@mui/icons-material/CleanHands";
 import StorageIcon from "@mui/icons-material/Storage";
 import { motion, easeOut } from "framer-motion";
+import Supresion from "../../assets/images/contraIncendio/sistemaSupresion3.jpeg";
 
 const MotionCard = motion(Card);
 const MotionBox = motion(Box);
@@ -47,7 +48,7 @@ const ServiceTres = () => {
                         color={theme.palette.primary.main}
                         gutterBottom
                     >
-                        Sistemas de Supresión
+                        Sistemas de Supresión y Redes Contra Incendio
                     </Typography>
 
                     <Typography
@@ -56,11 +57,11 @@ const ServiceTres = () => {
                         textAlign="center"
                         mb={6}
                     >
-                        Tecnología avanzada para la supresión eficiente de incendios en entornos especializados.
+                        Tecnología certificada contra incendio. Tales como: Sistemas de Supresión, Sistemas Contra Incendio con Agua y Espuma, Sistemas de Detección.
                     </Typography>
                 </MotionBox>
 
-                {/* Sistemas Especializados */}
+                {/* Redes Contra Incendio */}
                 <MotionBox
                     initial="hidden"
                     animate="visible"
@@ -72,7 +73,7 @@ const ServiceTres = () => {
                         color={theme.palette.secondary.main}
                         mb={2}
                     >
-                        Sistemas Especializados
+                        Redes Contra Incendio
                     </Typography>
                     <Divider sx={{ mb: 4 }} />
                 </MotionBox>
@@ -107,6 +108,10 @@ const ServiceTres = () => {
                                 sx={{
                                     backgroundColor: "#ccc",
                                     borderRadius: 2,
+                                    backgroundImage: `url(${Supresion})`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundRepeat: "no-repeat",
                                 }}
                             />
 

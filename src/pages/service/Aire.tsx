@@ -56,7 +56,7 @@ const ServiceUno = () => {
                         textAlign="center"
                         mb={6}
                     >
-                        Soluciones profesionales en aire comprimido para procesos industriales, pintura y extracción.
+                        Soluciones Profesionales en Aire Lavado, Mecánico y Acondicionado.
                     </Typography>
                 </MotionBox>
 
@@ -72,7 +72,7 @@ const ServiceUno = () => {
                         color={theme.palette.secondary.main}
                         mb={2}
                     >
-                        Lavado y Acondicionado
+                        Lavado
                     </Typography>
                     <Divider sx={{ mb: 4 }} />
                 </MotionBox>
@@ -156,7 +156,7 @@ const ServiceUno = () => {
                     </MotionCard>
                 </Box>
 
-                {/* Sistemas Mecánicos */}
+                {/* Sistemas Acondicionado */}
                 <Box mt={8}>
                     <MotionBox
                         initial="hidden"
@@ -169,7 +169,104 @@ const ServiceUno = () => {
                             color={theme.palette.secondary.main}
                             mb={2}
                         >
-                            Sistemas Mecánicos
+                            Mecánico
+                        </Typography>
+                        <Divider sx={{ mb: 4 }} />
+                    </MotionBox>
+
+                    <Box display="flex" flexWrap="wrap" gap={4} justifyContent="center">
+                        <MotionCard
+                            initial="hidden"
+                            animate="visible"
+                            variants={fadeInFrom("left")}
+                            sx={{
+                                flex: "1 1 300px",
+                                maxWidth: 500,
+                                borderRadius: 3,
+                                p: 2,
+                                backgroundColor: theme.palette.background.paper,
+                                boxShadow: 3,
+                            }}
+                        >
+                            <CardContent>
+                                <Box display="flex" alignItems="center" gap={2} mb={2}>
+                                    <BuildIcon
+                                        sx={{ fontSize: 36, color: theme.palette.primary.main }}
+                                    />
+                                    <Typography variant="h6" fontWeight={600}>
+                                        Mantenimiento de Compresores
+                                    </Typography>
+                                </Box>
+
+                                <Box
+                                    height={160}
+                                    mb={2}
+                                    sx={{
+                                        backgroundColor: "#ccc",
+                                        borderRadius: 2,
+                                    }}
+                                />
+
+                                <Typography color="text.secondary">
+                                    Servicio completo a compresores industriales, ya sean de tornillo o pistón.
+                                </Typography>
+                            </CardContent>
+                        </MotionCard>
+
+                        <MotionCard
+                            initial="hidden"
+                            animate="visible"
+                            variants={fadeInFrom("right")}
+                            sx={{
+                                flex: "1 1 300px",
+                                maxWidth: 500,
+                                borderRadius: 3,
+                                p: 2,
+                                backgroundColor: theme.palette.background.paper,
+                                boxShadow: 3,
+                            }}
+                        >
+                            <CardContent>
+                                <Box display="flex" alignItems="center" gap={2} mb={2}>
+                                    <AirIcon
+                                        sx={{ fontSize: 36, color: theme.palette.primary.main }}
+                                    />
+                                    <Typography variant="h6" fontWeight={600}>
+                                        Colectores de Polvo
+                                    </Typography>
+                                </Box>
+
+                                <Box
+                                    height={160}
+                                    mb={2}
+                                    sx={{
+                                        backgroundColor: "#ccc",
+                                        borderRadius: 2,
+                                    }}
+                                />
+
+                                <Typography color="text.secondary">
+                                    Instalación de sistemas de extracción con filtros ciclónicos o HEPA para ambientes industriales limpios.
+                                </Typography>
+                            </CardContent>
+                        </MotionCard>
+                    </Box>
+                </Box>
+
+                {/* Sistemas Acondicionado */}
+                <Box mt={8}>
+                    <MotionBox
+                        initial="hidden"
+                        animate="visible"
+                        variants={fadeInFrom("left")}
+                    >
+                        <Typography
+                            variant="h4"
+                            fontWeight={600}
+                            color={theme.palette.secondary.main}
+                            mb={2}
+                        >
+                            Acondicionado
                         </Typography>
                         <Divider sx={{ mb: 4 }} />
                     </MotionBox>

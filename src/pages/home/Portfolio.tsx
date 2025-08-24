@@ -1,12 +1,20 @@
 import { Box, Typography, useTheme, Button, IconButton } from "@mui/material";
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import Slider from "react-slick";
-import Logo from "../../assets/logo.jpeg";
 import Turbina from "../../assets/images/aire/mecanico/extractor atmoesferico 36pulgadas.jpeg";
+import Turbina2 from "../../assets/images/aire/turbina2.jpeg";
+import Turbina3 from "../../assets/images/aire/turbina3.jpeg";
 import Escalera from "../../assets/images/soldaduraEspecial/ProyectoEscalera1.jpeg";
 import Escalera2 from "../../assets/images/soldaduraEspecial/ProyectoEscalera2.jpeg";
 import Escalera3 from "../../assets/images/soldaduraEspecial/ProyectoEscalera3.jpeg";
 import Escalera4 from "../../assets/images/soldaduraEspecial/ProyectoEscalera4.jpeg";
+import PaileriaDpto from "../../assets/images/soldaduraEspecial/PaileriaDpto.jpeg";
+import PaileriaDpto2 from "../../assets/images/soldaduraEspecial/PaileriaDpto2.jpeg";
+import PaileriaDpto3 from "../../assets/images/soldaduraEspecial/PaileriaDpto3.jpeg";
+import SistemaSupersion from "../../assets/images/contraIncendio/sistemaSupresion.jpeg";
+import SistemaSupersion2 from "../../assets/images/contraIncendio/sistemaSupresion2.jpeg";
+import SistemaSupersion3 from "../../assets/images/contraIncendio/sistemaSupresion3.jpeg";
+import SistemaSupersion4 from "../../assets/images/contraIncendio/sistemaSupresion4.jpeg";
 import LINKS from "../../config/links";
 import { useState } from "react";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
@@ -28,7 +36,7 @@ const Portfolio = () => {
 
   const projects: Project[] = [
     {
-      title: "Proyecto de Herrería",
+      title: "Proyecto de Herrería Escalera Industrial",
       image: Escalera,
       description: "Se diseñó y se fabricó esta escalera a gusto y necesidades del cliente, con materiales de lámina calibre 18. Escalones fabricados en ángulo de 1 1/2, con lámina antiderrapante. El soporte principal es de tubo de 4 pulgadas, cédula 40. Teniendo una altura final de 12 metros.",
       images: [Escalera, Escalera2, Escalera3, Escalera4],
@@ -39,25 +47,25 @@ const Portfolio = () => {
       ]
     },
     {
-      title: "Proyecto 2",
-      image: Logo,
-      description: "Descripción detallada del proyecto 2 con todos los detalles técnicos relevantes.",
-      images: [Logo, Turbina, Logo],
-      features: ["Característica A", "Característica B", "Característica C"]
+      title: "Proyecto Pailería en Edificio para Departamentos",
+      image: PaileriaDpto,
+      description: "Trabajo de pailería en edificio departamental. Trabajado con materiales IPR estructural, PTR estructural y soldadura 70/18",
+      images: [PaileriaDpto, PaileriaDpto2, PaileriaDpto3],
+      features: ["IPR estructural", "PTR estructural", "Soldadura 70/18"]
     },
     {
-      title: "Proyecto 3",
+      title: "Sistema de Supresión Contra Incendios para Cocina",
+      image: SistemaSupersion,
+      description: "Sistema de supresión contra incendio para cocina marca ANSUL, certificado UL. Incluye actuadores térmicos, boquillas de descarga, mangueras, válvulas, tanque de químico extintor, palanca actuadora manual y tubería inoxidable.",
+      images: [SistemaSupersion, SistemaSupersion2, SistemaSupersion3, SistemaSupersion4],
+      features: ["Tanque químico extintor", "Tanque de supresión para actuador", "Boquillas rosiadoras"]
+    },
+    {
+      title: "Extractores Atmosféricos para Extracción de Aire",
       image: Turbina,
-      description: "Descripción detallada del proyecto 1 con todos los detalles técnicos relevantes.",
-      images: [Turbina, Logo, Turbina],
-      features: ["Característica 1", "Característica 2", "Característica 3"]
-    },
-    {
-      title: "Proyecto 4",
-      image: Logo,
-      description: "Descripción detallada del proyecto 2 con todos los detalles técnicos relevantes.",
-      images: [Logo, Turbina, Logo],
-      features: ["Característica A", "Característica B", "Característica C"]
+      description: "Proyecto suministro e instalación de extractores atomosféricos para aire caliente. Fabricados en lámina galvanizada o pintro con rodamientos, balero y base.",
+      images: [Turbina, Turbina2, Turbina3],
+      features: ["Lámina Galvanizada", "Rodamientos", "Base de montaje"]
     },
   ];
 
