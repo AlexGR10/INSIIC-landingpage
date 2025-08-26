@@ -20,5 +20,12 @@
         "Cache-Control": "public, max-age=0, must-revalidate"
       }
     }
-  ]
+  ],
+  "git": {
+    "deploymentEnabled": {
+      "main": true,
+      "develop": false,
+      "feature/*": false
+    }
+  }
 }
