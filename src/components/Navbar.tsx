@@ -144,7 +144,7 @@ Saludos cordiales.`;
                   },
                 }}
               >
-                Equipos de Supresión
+                Sistemas Contra Incendio
               </Box>
 
               <Box
@@ -162,7 +162,7 @@ Saludos cordiales.`;
                   },
                 }}
               >
-                Redes Contra Incendio
+                Soldadura y Pailería
               </Box>
 
               <EmailButton
