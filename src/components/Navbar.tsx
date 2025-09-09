@@ -37,8 +37,8 @@ const Navbar = () => {
   const generalContactMessage = `Estoy interesado en los servicios de INSIIC. Me gustaría recibir más información sobre:
 
 - Sistemas de Aire
-- Equipos de Supresión  
 - Redes Contra Incendio
+- Soldadura y Pailería
 
 Por favor, contactarme para conocer más detalles sobre sus servicios y solicitar una cotización.
 
@@ -130,7 +130,7 @@ Saludos cordiales.`;
               </Box>
 
               <Box
-                onClick={() => handleMenuClick(LINKS.EQUIPOS_DE_SUPRESION)}
+                onClick={() => handleMenuClick(LINKS.REDES_CONTRA_INCENDIO)}
                 sx={{
                   cursor: "pointer",
                   color: theme.palette.primary.main,
@@ -148,7 +148,7 @@ Saludos cordiales.`;
               </Box>
 
               <Box
-                onClick={() => handleMenuClick(LINKS.REDES_CONTRA_INCENDIO)}
+                onClick={() => handleMenuClick(LINKS.SOLDADURA_PAILERIA)}
                 sx={{
                   cursor: "pointer",
                   color: theme.palette.primary.main,
@@ -219,9 +219,9 @@ Saludos cordiales.`;
             </ListItem>
 
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleMenuClick(LINKS.EQUIPOS_DE_SUPRESION)}>
+              <ListItemButton onClick={() => handleMenuClick(LINKS.REDES_CONTRA_INCENDIO)}>
                 <ListItemText
-                  primary="Equipos de Supresión"
+                  primary="Redes Contra Incendio"
                   primaryTypographyProps={{
                     color: theme.palette.primary.main,
                     fontSize: "1rem",
@@ -232,9 +232,9 @@ Saludos cordiales.`;
             </ListItem>
 
             <ListItem disablePadding>
-              <ListItemButton onClick={() => handleMenuClick(LINKS.REDES_CONTRA_INCENDIO)}>
+              <ListItemButton onClick={() => handleMenuClick(LINKS.SOLDADURA_PAILERIA)}>
                 <ListItemText
-                  primary="Redes Contra Incendio"
+                  primary="Soldadura y Pailería"
                   primaryTypographyProps={{
                     color: theme.palette.primary.main,
                     fontSize: "1rem",

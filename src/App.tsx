@@ -4,8 +4,8 @@ import BackgroundOverlay from "./components/BackgroundOverlay";
 import Home from "./routes/Home";
 import Service from "./routes/Service";
 import ServiceAire from "./pages/service/Aire";
-import ServiceSupresion from "./pages/service/Supresion";
 import ServiceIncendio from "./pages/service/Incendio";
+import ServiceSoldaduraPaileria from "./pages/service/SoldaduraPaileria";
 import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
@@ -18,8 +18,8 @@ function App() {
         
         <Route path="/service" element={<Service />}>
           <Route path="aire" element={<ServiceAire />} />
-          <Route path="supresion" element={<ServiceSupresion />} />
           <Route path="incendio" element={<ServiceIncendio />} />
+          <Route path="soldadura" element={<ServiceSoldaduraPaileria />} />
         </Route>
 
         <Route path="*" element={<Home />} />

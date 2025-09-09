@@ -3,25 +3,32 @@ import {
   Typography,
   Card,
   useTheme,
-  Button,
 } from "@mui/material";
 import BuildCircleIcon from '@mui/icons-material/BuildCircle';
 import { Link as RouterLink } from "react-router-dom";
-import LogoIncendio from "../../assets/images/redesContraIncendio/Logo.jpeg"
+import LogoIncendio from "../../assets/images/contraIncendio/Logo.jpeg"
 import LogoAire from "../../assets/images/aire/Logo.webp"
 import LogoSoldadura from "../../assets/images/soldaduraEspecial/Logo.jpeg";
 import LINKS from "../../config/links";
+import EmailButton from "../../components/EmailButton"; // Importar EmailButton
 
 const Services = () => {
   const theme = useTheme();
 
-  const features = [
-    {
-      title: "Sistemas Contra Incendio",
-      desc: "Contamos con todo tipo de proyectos en sistemas contra incendio con marcas certificadas.",
-      img: LogoIncendio,
-      link: LINKS.REDES_CONTRA_INCENDIO,
-    },
+  // Mensaje para el botón de contacto
+  const servicesContactMessage = `Estoy interesado en los servicios de INSIIC. Me gustaría recibir más información sobre:
+
+- Sistemas de Aire
+- Redes Contra Incendio
+- Soldadura y Pailería
+
+Por favor, contactarme para conocer más detalles sobre sus servicios y solicitar una cotización.
+
+Quedo atento a su respuesta.
+
+Saludos cordiales.`;
+
+  const features = [    
     {
       title: "Sistemas de Todo Tipo en Aire para Acondicionar",
       desc: "Servicios en Aire Acondicionado, Aire Lavado, Aire Mecánico en todo tipo de equipos y marcas certificadas.",
@@ -29,10 +36,16 @@ const Services = () => {
       link: LINKS.SISTEMAS_DE_AIRE,
     },
     {
+      title: "Sistemas Contra Incendio",
+      desc: "Contamos con todo tipo de proyectos en sistemas contra incendio con marcas certificadas.",
+      img: LogoIncendio,
+      link: LINKS.REDES_CONTRA_INCENDIO,
+    },
+    {
       title: "Trabajos y Mantenimientos en Soldaduras Especiales",
       desc: "Diseñamos, instalamos y fabricamos todo tipo de estructuras en Pailería y Herrería.",
       img: LogoSoldadura,
-      link: LINKS.EQUIPOS_DE_SUPRESION,
+      link: LINKS.SOLDADURA_PAILERIA,
     },
   ];
 
@@ -223,9 +236,14 @@ const Services = () => {
         ))}
       </Box>
 
-      {/* Botón CTA */}
-      <Button
+      {/* Botón CTA - Reemplazado por EmailButton */}
+      <EmailButton
+        message={servicesContactMessage}
+        subject="Solicitud de Asesoría - Servicios INSIIC"
+        buttonText="Solicitar asesoría"
+        variant="contained"
         size="large"
+        showIcon={false}
         sx={{
           mt: 6,
           alignSelf: "center",
@@ -242,11 +260,7 @@ const Services = () => {
             backgroundColor: "white",
           },
         }}
-        component={RouterLink}
-        to={LINKS.CONTACTO}
-      >
-        Solicitar asesoría
-      </Button>
+      />
 
     </Box>
   );

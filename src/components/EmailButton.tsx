@@ -609,7 +609,7 @@ const EmailButton: React.FC<EmailButtonProps> = ({
               required
               disabled={isRateLimited}
               multiline
-              rows={4}
+              rows={10}
               variant="outlined"
               InputProps={{
                 startAdornment: (

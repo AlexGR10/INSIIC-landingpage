@@ -1,14 +1,22 @@
-import { Box, Typography, Button, useTheme } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import Logo from "../../assets/logo.jpeg";
-import LINKS from "../../config/links";
+import EmailButton from "../../components/EmailButton";
 
 const HeroSection = () => {
   const theme = useTheme();
 
-  const handleCTA = () => {
-    window.location.href = LINKS.CONTACTO;
-  };
+  const generalContactMessage = `Estoy interesado en los servicios de INSIIC. Me gustaría recibir más información sobre:
+
+- Sistemas de Aire
+- Redes Contra Incendio
+- Soldadura y Pailería
+
+Por favor, contactarme para conocer más detalles sobre sus servicios y solicitar una cotización.
+
+Quedo atento a su respuesta.
+
+Saludos cordiales.`;
 
   return (
     <Box
@@ -64,13 +72,14 @@ const HeroSection = () => {
           garantizando seguridad y eficiencia en cada proyecto industrial.
         </Typography>
 
-        <Button
-          variant="gradient"
-          size="small"
-          onClick={handleCTA}
-        >
-          <span>CONTÁCTANOS</span>
-        </Button>
+        <EmailButton
+                message={generalContactMessage}
+                subject="Consulta General sobre Servicios INSIIC"
+                buttonText="CONTÁCTANOS"
+                variant="gradient"
+                size="small"
+                showIcon={false}
+              />
 
       </Box>
 

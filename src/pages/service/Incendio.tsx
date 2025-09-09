@@ -7,11 +7,18 @@ import {
     Typography,
     useTheme,
 } from "@mui/material";
-import FireExtinguisherIcon from "@mui/icons-material/FireExtinguisher";
-import SecurityIcon from "@mui/icons-material/Security";
-import SensorsIcon from "@mui/icons-material/Sensors";
-import AlarmIcon from "@mui/icons-material/Alarm";
+import EngineeringIcon from "@mui/icons-material/Engineering";
+import WaterIcon from "@mui/icons-material/Water";
+import CleanHandsIcon from "@mui/icons-material/CleanHands";
+import StorageIcon from "@mui/icons-material/Storage";
 import { motion, easeOut } from "framer-motion";
+import EmailButton from "../../components/EmailButton";
+import Supresion from "../../assets/images/contraIncendio/sistemaSupresion3.jpeg";
+import CocinaIndustrial from "../../assets/images/contraIncendio/cocinaIndustrial.jpeg"
+import MantenimientoIncendio from "../../assets/images/contraIncendio/mantenimientoContaIncendio.jpeg"
+import EquipoCertificado from "../../assets/images/contraIncendio/equiposCertificados.jpeg"
+import SupresionAgua from "../../assets/images/contraIncendio/supresionAgua.jpeg"
+import DeteccionHumo from "../../assets/images/contraIncendio/deteccionHumo.jpeg"
 
 const MotionCard = motion(Card);
 const MotionBox = motion(Box);
@@ -28,7 +35,18 @@ const fadeInFrom = (direction: "left" | "right") => ({
     },
 });
 
-const ServiceDos = () => {
+const generalContactMessage = `Estoy interesado en los servicios de INSIIC. Me gustaría recibir más información sobre:
+
+- Redes Contra Incendio
+- Equipos de Supresión
+
+Por favor, contactarme para conocer más detalles sobre sus servicios y solicitar una cotización.
+
+Quedo atento a su respuesta.
+
+Saludos cordiales.`;
+
+const ServiceTres = () => {
     const theme = useTheme();
 
     return (
@@ -47,7 +65,7 @@ const ServiceDos = () => {
                         color={theme.palette.primary.main}
                         gutterBottom
                     >
-                        Sistemas contra Incendio
+                        Sistemas de Supresión y Redes Contra Incendio
                     </Typography>
 
                     <Typography
@@ -56,11 +74,11 @@ const ServiceDos = () => {
                         textAlign="center"
                         mb={6}
                     >
-                        Soluciones integrales para prevención, detección y combate de incendios en entornos industriales y comerciales.
+                        Tecnología certificada contra incendio. Tales como: Sistemas de Supresión, Sistemas Contra Incendio con Agua y Espuma, Sistemas de Detección.
                     </Typography>
                 </MotionBox>
 
-                {/* Detección y Alarma */}
+                {/* Equipos de Supresión */}
                 <MotionBox
                     initial="hidden"
                     animate="visible"
@@ -72,7 +90,7 @@ const ServiceDos = () => {
                         color={theme.palette.secondary.main}
                         mb={2}
                     >
-                        Detección y Alarma
+                        Equipos de Supresión
                     </Typography>
                     <Divider sx={{ mb: 4 }} />
                 </MotionBox>
@@ -93,11 +111,11 @@ const ServiceDos = () => {
                     >
                         <CardContent>
                             <Box display="flex" alignItems="center" gap={2} mb={2}>
-                                <SensorsIcon
+                                <EngineeringIcon
                                     sx={{ fontSize: 36, color: theme.palette.primary.main }}
                                 />
                                 <Typography variant="h6" fontWeight={600}>
-                                    Sensores Inteligentes
+                                    Supresión Química
                                 </Typography>
                             </Box>
 
@@ -107,11 +125,15 @@ const ServiceDos = () => {
                                 sx={{
                                     backgroundColor: "#ccc",
                                     borderRadius: 2,
+                                    backgroundImage: `url(${Supresion})`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundRepeat: "no-repeat",
                                 }}
                             />
 
                             <Typography color="text.secondary">
-                                Instalación de sensores de humo, calor y llama con tecnología de punta para detección temprana.
+                                Sistemas con agentes químicos secos para áreas con equipos eléctricos o combustibles líquidos.
                             </Typography>
                         </CardContent>
                     </MotionCard>
@@ -131,11 +153,11 @@ const ServiceDos = () => {
                     >
                         <CardContent>
                             <Box display="flex" alignItems="center" gap={2} mb={2}>
-                                <AlarmIcon
+                                <WaterIcon
                                     sx={{ fontSize: 36, color: theme.palette.primary.main }}
                                 />
                                 <Typography variant="h6" fontWeight={600}>
-                                    Sistemas de Alarma
+                                    Supresión en Cocinas Industriales
                                 </Typography>
                             </Box>
 
@@ -145,17 +167,21 @@ const ServiceDos = () => {
                                 sx={{
                                     backgroundColor: "#ccc",
                                     borderRadius: 2,
+                                    backgroundImage: `url(${CocinaIndustrial})`,
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
+                                    backgroundRepeat: "no-repeat",
                                 }}
                             />
 
                             <Typography color="text.secondary">
-                                Centrales de alarma con notificación automática a cuerpos de emergencia y protocolos de evacuación.
+                                Tecnología de supresión para entornos de cocinas industriales.
                             </Typography>
                         </CardContent>
                     </MotionCard>
                 </Box>
 
-                {/* Sistemas de Supresión */}
+                {/* Redes Contra Incendio */}
                 <Box mt={8}>
                     <MotionBox
                         initial="hidden"
@@ -168,7 +194,7 @@ const ServiceDos = () => {
                             color={theme.palette.secondary.main}
                             mb={2}
                         >
-                            Sistemas de Supresión
+                            Redes Contra Incendio
                         </Typography>
                         <Divider sx={{ mb: 4 }} />
                     </MotionBox>
@@ -189,11 +215,11 @@ const ServiceDos = () => {
                         >
                             <CardContent>
                                 <Box display="flex" alignItems="center" gap={2} mb={2}>
-                                    <FireExtinguisherIcon
+                                    <CleanHandsIcon
                                         sx={{ fontSize: 36, color: theme.palette.primary.main }}
                                     />
                                     <Typography variant="h6" fontWeight={600}>
-                                        Rociadores Automáticos
+                                        Mantenimientos Preventivos y Correctivos
                                     </Typography>
                                 </Box>
 
@@ -203,11 +229,15 @@ const ServiceDos = () => {
                                     sx={{
                                         backgroundColor: "#ccc",
                                         borderRadius: 2,
+                                        backgroundImage: `url(${MantenimientoIncendio})`,
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        backgroundRepeat: "no-repeat",
                                     }}
                                 />
 
                                 <Typography color="text.secondary">
-                                    Redes de rociadores diseñadas según NFPA para protección de áreas específicas con activación automática.
+                                    Proyectos de redes contra incendio de todo tipo equipos UL/ FM  normados y certificados NOM del país.
                                 </Typography>
                             </CardContent>
                         </MotionCard>
@@ -227,11 +257,11 @@ const ServiceDos = () => {
                         >
                             <CardContent>
                                 <Box display="flex" alignItems="center" gap={2} mb={2}>
-                                    <SecurityIcon
+                                    <StorageIcon
                                         sx={{ fontSize: 36, color: theme.palette.primary.main }}
                                     />
                                     <Typography variant="h6" fontWeight={600}>
-                                        Sistemas de Gas
+                                        Sistemas de Detección Certificados
                                     </Typography>
                                 </Box>
 
@@ -241,19 +271,154 @@ const ServiceDos = () => {
                                     sx={{
                                         backgroundColor: "#ccc",
                                         borderRadius: 2,
+                                        backgroundImage: `url(${EquipoCertificado})`,
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        backgroundRepeat: "no-repeat",
                                     }}
                                 />
 
                                 <Typography color="text.secondary">
-                                    Sistemas de supresión con gases limpios (FM-200, Novec 1230) para proteger equipos sensibles y áreas críticas.
+                                    Mantenimientos preventivos y correctivos en sistemas de detección certificados.
                                 </Typography>
                             </CardContent>
                         </MotionCard>
                     </Box>
+                </Box>
+
+                {/* Sistemas de Supresión en Agua */}
+                <Box mt={8}>
+                    <MotionBox
+                        initial="hidden"
+                        animate="visible"
+                        variants={fadeInFrom("left")}
+                    >
+                        <Typography
+                            variant="h4"
+                            fontWeight={600}
+                            color={theme.palette.secondary.main}
+                            mb={2}
+                        >
+                            Aplicaciones Industriales
+                        </Typography>
+                        <Divider sx={{ mb: 4 }} />
+                    </MotionBox>
+
+                    <Box display="flex" flexWrap="wrap" gap={4} justifyContent="center" mb={8}>
+                        <MotionCard
+                            initial="hidden"
+                            animate="visible"
+                            variants={fadeInFrom("left")}
+                            sx={{
+                                flex: "1 1 300px",
+                                maxWidth: 500,
+                                borderRadius: 3,
+                                p: 2,
+                                backgroundColor: theme.palette.background.paper,
+                                boxShadow: 3,
+                            }}
+                        >
+                            <CardContent>
+                                <Box display="flex" alignItems="center" gap={2} mb={2}>
+                                    <WaterIcon
+                                        sx={{ fontSize: 36, color: theme.palette.primary.main }}
+                                    />
+                                    <Typography variant="h6" fontWeight={600}>
+                                        Sistemas de Supresión en Agua
+                                    </Typography>
+                                </Box>
+
+                                <Box
+                                    height={160}
+                                    mb={2}
+                                    sx={{
+                                        backgroundColor: "#ccc",
+                                        borderRadius: 2,
+                                        backgroundImage: `url(${SupresionAgua})`,
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        backgroundRepeat: "no-repeat",
+                                    }}
+                                />
+
+                                <Typography color="text.secondary">
+                                    Sistemas de supresión en agua y espumas normados para tanques de almacenamiento. Ingeniería y mantenimientos.
+                                </Typography>
+                            </CardContent>
+                        </MotionCard>
+
+                        <MotionCard
+                            initial="hidden"
+                            animate="visible"
+                            variants={fadeInFrom("right")}
+                            sx={{
+                                flex: "1 1 300px",
+                                maxWidth: 500,
+                                borderRadius: 3,
+                                p: 2,
+                                backgroundColor: theme.palette.background.paper,
+                                boxShadow: 3,
+                            }}
+                        >
+                            <CardContent>
+                                <Box display="flex" alignItems="center" gap={2} mb={2}>
+                                    <EngineeringIcon
+                                        sx={{ fontSize: 36, color: theme.palette.primary.main }}
+                                    />
+                                    <Typography variant="h6" fontWeight={600}>
+                                        Detección de Humo y Calor
+                                    </Typography>
+                                </Box>
+
+                                <Box
+                                    height={160}
+                                    mb={2}
+                                    sx={{
+                                        backgroundColor: "#ccc",
+                                        borderRadius: 2,
+                                        backgroundImage: `url(${DeteccionHumo})`,
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        backgroundRepeat: "no-repeat",
+                                    }}
+                                />
+
+                                <Typography color="text.secondary">
+                                    Proyectos en detección de humo, calor y gases. Ingeniería e instalación.
+                                </Typography>
+                            </CardContent>
+                        </MotionCard>
+                    </Box>
+                </Box>
+
+                <Box 
+                    sx={{ 
+                        display: "flex", 
+                        justifyContent: "center", 
+                        mt: 8,
+                        mb: 4 
+                    }}
+                >
+                    <EmailButton
+                        message={generalContactMessage}
+                        subject="Consulta - Sistemas Contra Incendio"
+                        buttonText="SOLICITAR INFORMACIÓN"
+                        variant="gradient"
+                        size="medium"
+                        showIcon={false}
+                        sx={{
+                            maxWidth: { xs: "280px", sm: "320px" },
+                            py: 1.5,
+                            px: 4,
+                            borderRadius: 3,
+                            fontSize: { xs: "0.9rem", sm: "1rem" },
+                            fontWeight: 600,
+                        }}
+                    />
                 </Box>
             </Container>
         </Box>
     );
 };
 
-export default ServiceDos;
+export default ServiceTres;

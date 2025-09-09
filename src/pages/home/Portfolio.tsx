@@ -1,4 +1,4 @@
-import { Box, Typography, useTheme, Button, IconButton } from "@mui/material";
+import { Box, Typography, useTheme, IconButton } from "@mui/material";
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import Slider from "react-slick";
 import Turbina from "../../assets/images/aire/mecanico/extractor atmoesferico 36pulgadas.jpeg";
@@ -20,6 +20,7 @@ import { useState } from "react";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ProjectModal from "../../components/ProjectModal";
+import EmailButton from "../../components/EmailButton"; // Importar EmailButton
 
 type Project = {
   title: string;
@@ -33,6 +34,20 @@ const Portfolio = () => {
   const theme = useTheme();
   const [openModal, setOpenModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+
+  // Mensaje para el botón de contacto
+  const portfolioContactMessage = `He visto algunos de los proyectos de INSIIC en su portafolio y me interesa conocer más sobre sus servicios:
+
+- Herrería y estructuras metálicas
+- Sistemas de aire y extractores atmosféricos
+- Sistemas de supresión contra incendios
+- Trabajos de pailería industrial
+
+Me gustaría discutir un proyecto similar o solicitar una cotización para mis necesidades específicas.
+
+Quedo atento a su respuesta para coordinar una reunión.
+
+Saludos cordiales.`;
 
   const projects: Project[] = [
     {
@@ -199,7 +214,8 @@ const Portfolio = () => {
       <Box sx={{
         width: "100%",
         maxWidth: 1200,
-        position: 'relative'
+        position: 'relative',
+        mb: 8 // Aumentamos el margen inferior del carrusel
       }}>
         <Slider {...settings}>
           {projects.map((project, index) => (
@@ -245,13 +261,18 @@ const Portfolio = () => {
         </Slider>
       </Box>
 
-      <Button
+      {/* EmailButton con más espacio */}
+      <EmailButton
+        message={portfolioContactMessage}
+        subject="Consulta sobre Proyectos - Portfolio INSIIC"
+        buttonText="CONTÁCTANOS"
         variant="gradient"
         size="large"
-        onClick={handleCTA}
-      >
-        <span>CONTÁCTANOS</span>
-      </Button>
+        showIcon={false}
+        sx={{
+          alignSelf: "center",
+        }}
+      />
 
       <ProjectModal
         open={openModal}

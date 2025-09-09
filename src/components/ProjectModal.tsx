@@ -1,7 +1,8 @@
-import { Modal, Box, Typography, IconButton, Button } from "@mui/material";
+import { Modal, Box, Typography, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import Slider from "react-slick";
 import { useTheme } from "@mui/material/styles";
+import EmailButton from "./EmailButton"; // Importar EmailButton
 
 type Project = {
   title: string;
@@ -17,8 +18,55 @@ type ProjectModalProps = {
   onContactClick: () => void;
 };
 
-const ProjectModal = ({ open, onClose, project, onContactClick }: ProjectModalProps) => {
+const ProjectModal = ({ open, onClose, project }: ProjectModalProps) => {
   const theme = useTheme();
+
+  // Función para generar mensaje personalizado según el proyecto
+  const generateProjectMessage = (project: Project) => {
+    if (!project) return "";
+
+    const projectKeywords = {
+      "Proyecto de Herrería Escalera Industrial": {
+        type: "herrería y estructuras metálicas",
+        details: "escaleras industriales, estructuras de acero, trabajos de herrería personalizada"
+      },
+      "Proyecto Pailería en Edificio para Departamentos": {
+        type: "pailería y estructuras",
+        details: "trabajos de pailería, estructuras IPR, soldadura especializada"
+      },
+      "Sistema de Supresión Contra Incendios para Cocina": {
+        type: "sistemas contra incendio",
+        details: "sistemas de supresión ANSUL, protección contra incendios en cocinas, equipos certificados UL"
+      },
+      "Extractores Atmosféricos para Extracción de Aire": {
+        type: "sistemas de aire y ventilación",
+        details: "extractores atmosféricos, sistemas de ventilación, equipos de extracción de aire"
+      }
+    };
+
+    const projectInfo = projectKeywords[project.title as keyof typeof projectKeywords] || {
+      type: "proyectos industriales",
+      details: "soluciones industriales personalizadas"
+    };
+
+    return `He visto el proyecto "${project.title}" en su portafolio y me interesa conocer más sobre sus servicios de ${projectInfo.type}.
+
+Detalles del proyecto que me llamaron la atención:
+${project.features.map(feature => `- ${feature}`).join('\n')}
+
+Me gustaría solicitar información sobre:
+- Cotización para un proyecto similar
+- Tiempos de fabricación e instalación  
+- Garantías y certificaciones
+- Servicios de mantenimiento
+
+Descripción de mi necesidad:
+[Describa aquí sus requerimientos específicos]
+
+Quedo atento a su respuesta para coordinar una visita técnica.
+
+Saludos cordiales.`;
+  };
 
   return (
     <Modal
@@ -125,13 +173,19 @@ const ProjectModal = ({ open, onClose, project, onContactClick }: ProjectModalPr
               </ul>
             </Box>
 
-            <Button
+            {/* EmailButton con mensaje personalizado */}
+            <EmailButton
+              message={generateProjectMessage(project)}
+              subject={`Consulta sobre: ${project.title} - INSIIC`}
+              buttonText="CONTÁCTANOS SOBRE ESTE PROYECTO"
               variant="gradient"
-              onClick={onContactClick}
-              sx={{ mt: 2 }}
-            >
-              <span>CONTÁCTANOS SOBRE ESTE PROYECTO</span>
-            </Button>
+              size="large"
+              showIcon={false}
+              sx={{
+                mt: 2,
+                width: "100%"
+              }}
+            />
           </>
         )}
       </Box>
