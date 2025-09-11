@@ -1,3 +1,10 @@
+/**
+ * @file AboutUs.tsx
+ * @brief This component renders the "About Us" section of the home page.
+ *
+ * It displays information about the company, its certifications, and provides links to download certification documents.
+ */
+
 import { Box, Typography, Card, Button, useTheme, Tooltip } from "@mui/material";
 import { Download, Verified, Business, Security, LocalFireDepartment } from "@mui/icons-material";
 import LogoNFPA from "../../assets/images/certificados/NFPA.png";
@@ -5,13 +12,23 @@ import LogoREPSE from "../../assets/images/certificados/repse.jfif";
 import LogoSTPS from "../../assets/images/certificados/STPS.jfif";
 import LogoAnsul from "../../assets/images/certificados/ANSUL.png";
 
-// Importa los PDFs
+// Import PDFs
 import NFPACertificacion from "../../assets/images/certificados/NFPA-Certificacion.pdf";
 import NFPAConstancia from "../../assets/images/certificados/NFPAConstancia.pdf";
 
+/**
+ * @function AboutUs
+ * @brief A functional component that renders the About Us section.
+ *
+ * @returns {JSX.Element} The rendered About Us section.
+ */
 const AboutUs = () => {
   const theme = useTheme();
 
+  /**
+   * @const certificaciones
+   * @brief An array of objects representing the company's certifications.
+   */
   const certificaciones = [
     {
       id: "nfpa",
@@ -62,6 +79,12 @@ const AboutUs = () => {
     }
   ];
 
+  /**
+   * @function handleDownloadPDF
+   * @brief Handles the download of a PDF file.
+   * @param {string} pdfFile - The path to the PDF file.
+   * @param {string} fileName - The desired name for the downloaded file.
+   */
   const handleDownloadPDF = (pdfFile: string, fileName: string) => {
     const link = document.createElement('a');
     link.href = pdfFile;
@@ -84,7 +107,7 @@ const AboutUs = () => {
         color: theme.palette.common.white,
       }}
     >
-      {/* Background azul institucional */}
+      {/* Institutional blue background */}
       <Box
         sx={{
           position: "absolute",
@@ -99,7 +122,7 @@ const AboutUs = () => {
         }}
       />
 
-      {/* Contenido */}
+      {/* Content */}
       <Box
         sx={{
           position: "relative",
@@ -112,7 +135,7 @@ const AboutUs = () => {
           gap: 6,
         }}
       >
-        {/* Texto principal */}
+        {/* Main text */}
         <Box sx={{ textAlign: "center", mb: 4 }}>
           <Typography
             variant="h3"
@@ -142,7 +165,7 @@ const AboutUs = () => {
           </Typography>
         </Box>
 
-        {/* Texto de certificaciones */}
+        {/* Certifications text */}
         <Typography
           variant="body1"
           sx={{
@@ -156,7 +179,7 @@ const AboutUs = () => {
           Contamos con las siguientes certificaciones, registros y marcas de calidad:
         </Typography>
 
-        {/* Grid de certificaciones mejorado */}
+        {/* Improved certifications grid */}
         <Box
           sx={{
             display: "grid",
@@ -190,7 +213,7 @@ const AboutUs = () => {
                 }
               }}
             >
-              {/* Ícono en esquina superior */}
+              {/* Icon in the top corner */}
               <Box
                 sx={{
                   position: "absolute",
@@ -216,7 +239,7 @@ const AboutUs = () => {
                 }}
               />
 
-              {/* Información */}
+              {/* Information */}
               <Typography
                 variant="h6"
                 sx={{
@@ -254,7 +277,7 @@ const AboutUs = () => {
                 {cert.description}
               </Typography>
 
-              {/* Botones de descarga para PDFs */}
+              {/* Download buttons for PDFs */}
               {cert.pdfs.length > 0 && (
                 <Box sx={{ width: "100%", mt: "auto" }}>
                   {cert.pdfs.map((pdf, index) => (
@@ -286,7 +309,7 @@ const AboutUs = () => {
                 </Box>
               )}
 
-              {/* Elemento decorativo para cards sin PDFs */}
+              {/* Decorative element for cards without PDFs */}
               {cert.pdfs.length === 0 && (
                 <Box 
                   sx={{ 
@@ -314,7 +337,7 @@ const AboutUs = () => {
           ))}
         </Box>
 
-        {/* Texto final */}
+        {/* Final text */}
         <Typography
           variant="body1"
           sx={{
@@ -328,7 +351,7 @@ const AboutUs = () => {
           Tu seguridad y cumplimiento normativo son nuestra prioridad.
         </Typography>
 
-        {/* Nota sobre documentos */}
+        {/* Note about documents */}
         <Typography
           variant="body2"
           sx={{

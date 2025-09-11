@@ -1,9 +1,21 @@
+/**
+ * @file ProjectModal.tsx
+ * @brief This component renders a modal to display project details.
+ *
+ * The modal includes a project title, a carousel of images, a description, a list of features,
+ * and a contact button that generates a project-specific message.
+ */
+
 import { Modal, Box, Typography, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 import Slider from "react-slick";
 import { useTheme } from "@mui/material/styles";
-import EmailButton from "./EmailButton"; // Importar EmailButton
+import EmailButton from "./EmailButton";
 
+/**
+ * @typedef Project
+ * @brief Represents a project with its details.
+ */
 type Project = {
   title: string;
   description: string;
@@ -11,6 +23,10 @@ type Project = {
   features: string[];
 };
 
+/**
+ * @typedef ProjectModalProps
+ * @brief Props for the ProjectModal component.
+ */
 type ProjectModalProps = {
   open: boolean;
   onClose: () => void;
@@ -18,10 +34,21 @@ type ProjectModalProps = {
   onContactClick: () => void;
 };
 
+/**
+ * @function ProjectModal
+ * @brief A functional component that renders a modal with project details.
+ * @param {ProjectModalProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered modal component.
+ */
 const ProjectModal = ({ open, onClose, project }: ProjectModalProps) => {
   const theme = useTheme();
 
-  // Función para generar mensaje personalizado según el proyecto
+  /**
+   * @function generateProjectMessage
+   * @brief Generates a personalized message based on the project.
+   * @param {Project} project - The project to generate the message for.
+   * @returns {string} The generated message.
+   */
   const generateProjectMessage = (project: Project) => {
     if (!project) return "";
 
@@ -129,7 +156,7 @@ Saludos cordiales.`;
               {project.title}
             </Typography>
             
-            {/* Carrusel de imágenes */}
+            {/* Image carousel */}
             <Box sx={{ mb: 4 }}>
               <Slider
                 dots={true}
@@ -173,7 +200,7 @@ Saludos cordiales.`;
               </ul>
             </Box>
 
-            {/* EmailButton con mensaje personalizado */}
+            {/* EmailButton with custom message */}
             <EmailButton
               message={generateProjectMessage(project)}
               subject={`Consulta sobre: ${project.title} - INSIIC`}

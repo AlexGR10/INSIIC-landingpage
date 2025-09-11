@@ -1,3 +1,9 @@
+/**
+ * @file index.css
+ * @brief This file contains global styles for the application.
+ */
+
+/* Define root variables and base font styles. */
 :root {
   font-family: Roboto, sans-serif;
   color-scheme: light dark;
@@ -6,6 +12,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Basic styles for the body element. */
 body {
   margin: 0;
   width: 100%;
@@ -13,11 +20,13 @@ body {
   min-height: 100vh;
 }
 
+/* Remove text decoration from links. */
 a {
   text-decoration: none;
   color: inherit;
 }
 
+/* Use border-box for all elements. */
 * {
   box-sizing: border-box;
 }

@@ -1,3 +1,10 @@
+/**
+ * @file FAQ.tsx
+ * @brief This component renders a Frequently Asked Questions (FAQ) section.
+ *
+ * It uses Material-UI's Accordion component to display a list of questions and answers.
+ */
+
 import {
   Box,
   Typography,
@@ -10,6 +17,10 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
 import { red } from "@mui/material/colors";
 
+/**
+ * @const faqs
+ * @brief An array of objects representing the frequently asked questions.
+ */
 const faqs = [
   {
     question: "¿Qué servicios ofrece INSIIC?",
@@ -33,6 +44,12 @@ const faqs = [
   },
 ];
 
+/**
+ * @function FAQ
+ * @brief A functional component that renders the FAQ section.
+ *
+ * @returns {JSX.Element} The rendered FAQ section.
+ */
 const FAQ = () => {
   const theme = useTheme();
 
@@ -48,7 +65,7 @@ const FAQ = () => {
         alignItems: "center",
       }}
     >
-      {/* Encabezado full width alineado a la izquierda */}
+      {/* Full-width header aligned to the left */}
       <Box
         sx={{
           display: "flex",
@@ -82,7 +99,7 @@ const FAQ = () => {
         </Box>
       </Box>
 
-      {/* Acordeones - 100% de ancho */}
+      {/* Accordions - 100% width */}
       <Box
         sx={{
           width: "100%",

@@ -1,24 +1,31 @@
+/**
+ * @file theme.ts
+ * @brief This file defines the custom Material-UI theme for the application.
+ *
+ * It includes the color palette, typography, and component overrides, such as the custom `gradient` button variant.
+ */
+
 import { createTheme } from "@mui/material/styles";
 
 const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#2659A8", // Azul branding
+      main: "#2659A8", // Branding blue
     },
     secondary: {
-      main: "#ED2A38", // Rojo acento
+      main: "#ED2A38", // Accent red
     },
     background: {
-      default: "#FFFFFF", // Blanco fondo
+      default: "#FFFFFF", // White background
       paper: "#FFFFFF",
     },
     text: {
-      primary: "#000000", // Negro texto principal
-      secondary: "#78797B", // Gris texto secundario
+      primary: "#000000", // Black primary text
+      secondary: "#78797B", // Gray secondary text
     },
     grey: {
-      500: "#78797B", // Gris personalizado en grey[500]
+      500: "#78797B", // Custom gray in grey[500]
     },
   },
   typography: {
@@ -26,22 +33,22 @@ const theme = createTheme({
     h1: {
       fontSize: "3rem",
       fontWeight: 700,
-      color: "#ED2A38", // Azul
+      color: "#ED2A38", // Blue
     },
     h2: {
       fontSize: "2.5rem",
       fontWeight: 700,
-      color: "#2659A8", // Rojo ED2A38
+      color: "#2659A8", // Red ED2A38
     },
     h3: {
       fontSize: "2rem",
       fontWeight: 700,
-      color: "#78797B", // Gris
+      color: "#78797B", // Gray
     },
     subtitle1: {
       fontSize: "1.25rem",
       fontWeight: 500,
-      color: "#000000", // Negro
+      color: "#000000", // Black
     },
     body1: {
       fontSize: "1rem",
@@ -78,13 +85,13 @@ const theme = createTheme({
             fontWeight: 'bold',
             textTransform: 'none',
             background: 'linear-gradient(90deg, #2659A8 4.4%, #ED2A38 100%)',
-            color: '#FFFFFF !important', // Forzar color blanco
+            color: '#FFFFFF !important', // Force white color
             border: 'none',
             transition: 'all 0.3s ease',
             '&:hover': {
               background: 'linear-gradient(90deg, #1f4c90 4.4%, #c9202d 100%)',
             },
-            // Efecto de borde animado
+            // Animated border effect
             '&::before': {
               content: '""',
               position: 'absolute',
@@ -95,10 +102,10 @@ const theme = createTheme({
               borderRadius: 'inherit',
               background: 'linear-gradient(90deg, #2659A8, #cc1723ff, #2659A8)',
               backgroundSize: '300% 300%',
-              zIndex: -1, // Cambiado a -1 para que esté detrás
+              zIndex: -1, // Changed to -1 to be behind
               animation: 'borderGlow 3s linear infinite',
             },
-            // Asegurar que todo el contenido esté visible
+            // Ensure all content is visible
             '& .MuiButton-startIcon': {
               color: '#FFFFFF !important',
               zIndex: 2,
@@ -107,7 +114,7 @@ const theme = createTheme({
               color: '#FFFFFF !important',
               zIndex: 2,
             },
-            // Keyframes para la animación
+            // Keyframes for the animation
             '@keyframes borderGlow': {
               '0%': { backgroundPosition: '0% 50%' },
               '50%': { backgroundPosition: '100% 50%' },
@@ -126,7 +133,7 @@ const theme = createTheme({
             fontWeight: 'bold',
             textTransform: 'none',
             background: 'linear-gradient(90deg, #2659A8 4.4%, #ED2A38 100%)',
-            color: '#FFFFFF !important', // Forzar color blanco
+            color: '#FFFFFF !important', // Force white color
             border: 'none',
             transition: 'all 0.3s ease',
             '&:hover': {
@@ -142,7 +149,7 @@ const theme = createTheme({
               borderRadius: 'inherit',
               background: 'linear-gradient(90deg, #2659A8, #cc1723ff, #2659A8)',
               backgroundSize: '300% 300%',
-              zIndex: -1, // Cambiado a -1 para que esté detrás
+              zIndex: -1, // Changed to -1 to be behind
               animation: 'borderGlow 3s linear infinite',
             },
             '& .MuiButton-startIcon': {

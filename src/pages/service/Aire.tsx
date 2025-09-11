@@ -1,3 +1,11 @@
+/**
+ * @file Aire.tsx
+ * @brief This component renders the service page for "Sistemas de Aire" (Air Systems).
+ *
+ * It is divided into three main sections: Lavado (Washing), Mecánico (Mechanical), and Acondicionado (Conditioning).
+ * The component uses framer-motion for entry animations.
+ */
+
 import {
     Box,
     Card,
@@ -16,6 +24,12 @@ import { motion, easeOut } from "framer-motion";
 const MotionCard = motion(Card);
 const MotionBox = motion(Box);
 
+/**
+ * @function fadeInFrom
+ * @brief A utility function to create fade-in animations from a specified direction.
+ * @param {"left" | "right"} direction - The direction from which to fade in.
+ * @returns {object} The animation variants for framer-motion.
+ */
 const fadeInFrom = (direction: "left" | "right") => ({
     hidden: { opacity: 0, x: direction === "left" ? -50 : 50 },
     visible: {
@@ -28,13 +42,19 @@ const fadeInFrom = (direction: "left" | "right") => ({
     },
 });
 
+/**
+ * @function ServiceUno
+ * @brief A functional component that renders the Air Systems service page.
+ *
+ * @returns {JSX.Element} The rendered service page.
+ */
 const ServiceUno = () => {
     const theme = useTheme();
 
     return (
         <Box sx={{ minHeight: "100dvh", py: 8 }}>
             <Container maxWidth="lg">
-                {/* Título principal */}
+                {/* Main Title */}
                 <MotionBox
                     initial="hidden"
                     animate="visible"
@@ -101,7 +121,7 @@ const ServiceUno = () => {
                                 </Typography>
                             </Box>
 
-                            {/* Imagen Placeholder */}
+                            {/* Image Placeholder */}
                             <Box
                                 height={160}
                                 mb={2}
@@ -156,7 +176,7 @@ const ServiceUno = () => {
                     </MotionCard>
                 </Box>
 
-                {/* Sistemas Acondicionado */}
+                {/* Sistemas Mecánico */}
                 <Box mt={8}>
                     <MotionBox
                         initial="hidden"

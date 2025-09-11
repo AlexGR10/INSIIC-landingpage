@@ -1,8 +1,22 @@
+/**
+ * @file HeroSection.tsx
+ * @brief This component renders the hero section of the home page.
+ *
+ * It displays a title, a subtitle, a call-to-action button, and the company logo.
+ * The component uses framer-motion for entry animations.
+ */
+
 import { Box, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import Logo from "../../assets/logo.jpeg";
 import EmailButton from "../../components/EmailButton";
 
+/**
+ * @function HeroSection
+ * @brief A functional component that renders the hero section.
+ *
+ * @returns {JSX.Element} The rendered hero section.
+ */
 const HeroSection = () => {
   const theme = useTheme();
 
@@ -31,7 +45,7 @@ Saludos cordiales.`;
         px: { xs: 5, md: 10 },
       }}
     >
-      {/* Izquierda: Frase y descripción */}
+      {/* Left side: Title and description */}
       <Box
         component={motion.div}
         initial={{ opacity: 0, x: -50 }}
@@ -83,7 +97,7 @@ Saludos cordiales.`;
 
       </Box>
 
-      {/* Derecha: Logo siempre renderizado */}
+      {/* Right side: Logo (always rendered) */}
       <Box
         component={motion.div}
         initial={{ opacity: 0, x: 50 }}

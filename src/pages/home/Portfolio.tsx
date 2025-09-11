@@ -1,3 +1,10 @@
+/**
+ * @file Portfolio.tsx
+ * @brief This component renders the portfolio section of the home page.
+ *
+ * It showcases a selection of projects in a carousel and allows users to view project details in a modal.
+ */
+
 import { Box, Typography, useTheme, IconButton } from "@mui/material";
 import WorkOutlineIcon from '@mui/icons-material/WorkOutline';
 import Slider from "react-slick";
@@ -20,8 +27,12 @@ import { useState } from "react";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ProjectModal from "../../components/ProjectModal";
-import EmailButton from "../../components/EmailButton"; // Importar EmailButton
+import EmailButton from "../../components/EmailButton";
 
+/**
+ * @typedef Project
+ * @brief Represents a project with its details.
+ */
 type Project = {
   title: string;
   image: string;
@@ -30,12 +41,18 @@ type Project = {
   features: string[];
 };
 
+/**
+ * @function Portfolio
+ * @brief A functional component that renders the portfolio section.
+ *
+ * @returns {JSX.Element} The rendered portfolio section.
+ */
 const Portfolio = () => {
   const theme = useTheme();
   const [openModal, setOpenModal] = useState(false);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  // Mensaje para el botón de contacto
+  // Message for the contact button
   const portfolioContactMessage = `He visto algunos de los proyectos de INSIIC en su portafolio y me interesa conocer más sobre sus servicios:
 
 - Herrería y estructuras metálicas
@@ -49,6 +66,10 @@ Quedo atento a su respuesta para coordinar una reunión.
 
 Saludos cordiales.`;
 
+  /**
+   * @const projects
+   * @brief An array of objects representing the portfolio projects.
+   */
   const projects: Project[] = [
     {
       title: "Proyecto de Herrería Escalera Industrial",
@@ -84,7 +105,7 @@ Saludos cordiales.`;
     },
   ];
 
-  // Flechas personalizadas mejoradas
+  // Custom improved arrows
   const SampleNextArrow = (props: any) => {
     const { onClick } = props;
     return (
@@ -131,6 +152,10 @@ Saludos cordiales.`;
     );
   };
 
+  /**
+   * @const settings
+   * @brief Configuration for the react-slick carousel.
+   */
   const settings = {
     dots: true,
     infinite: true,
@@ -161,11 +186,20 @@ Saludos cordiales.`;
     window.location.href = LINKS.CONTACTO;
   };
 
+  /**
+   * @function handleOpenModal
+   * @brief Opens the project modal with the selected project.
+   * @param {Project} project - The project to display in the modal.
+   */
   const handleOpenModal = (project: Project) => {
     setSelectedProject(project);
     setOpenModal(true);
   };
 
+  /**
+   * @function handleCloseModal
+   * @brief Closes the project modal.
+   */
   const handleCloseModal = () => {
     setOpenModal(false);
   };
@@ -183,7 +217,7 @@ Saludos cordiales.`;
         color: theme.palette.common.black,
       }}
     >
-      {/* Encabezado */}
+      {/* Header */}
       <Box
         sx={{
           width: "100%",
@@ -210,12 +244,12 @@ Saludos cordiales.`;
         </Box>
       </Box>
 
-      {/* Carrusel */}
+      {/* Carousel */}
       <Box sx={{
         width: "100%",
         maxWidth: 1200,
         position: 'relative',
-        mb: 8 // Aumentamos el margen inferior del carrusel
+        mb: 8 // Increased bottom margin for the carousel
       }}>
         <Slider {...settings}>
           {projects.map((project, index) => (
@@ -261,7 +295,7 @@ Saludos cordiales.`;
         </Slider>
       </Box>
 
-      {/* EmailButton con más espacio */}
+      {/* EmailButton with more space */}
       <EmailButton
         message={portfolioContactMessage}
         subject="Consulta sobre Proyectos - Portfolio INSIIC"

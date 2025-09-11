@@ -1,3 +1,11 @@
+/**
+ * @file Incendio.tsx
+ * @brief This component renders the service page for "Sistemas de Supresión y Redes Contra Incendio" (Suppression Systems and Fire Networks).
+ *
+ * It is divided into three main sections: Equipos de Supresión (Suppression Equipment), Redes Contra Incendio (Fire Networks), and Aplicaciones Industriales (Industrial Applications).
+ * The component uses framer-motion for entry animations.
+ */
+
 import {
     Box,
     Card,
@@ -23,6 +31,12 @@ import DeteccionHumo from "../../assets/images/contraIncendio/deteccionHumo.jpeg
 const MotionCard = motion(Card);
 const MotionBox = motion(Box);
 
+/**
+ * @function fadeInFrom
+ * @brief A utility function to create fade-in animations from a specified direction.
+ * @param {"left" | "right"} direction - The direction from which to fade in.
+ * @returns {object} The animation variants for framer-motion.
+ */
 const fadeInFrom = (direction: "left" | "right") => ({
     hidden: { opacity: 0, x: direction === "left" ? -50 : 50 },
     visible: {
@@ -46,13 +60,19 @@ Quedo atento a su respuesta.
 
 Saludos cordiales.`;
 
+/**
+ * @function ServiceTres
+ * @brief A functional component that renders the Fire Suppression and Networks service page.
+ *
+ * @returns {JSX.Element} The rendered service page.
+ */
 const ServiceTres = () => {
     const theme = useTheme();
 
     return (
         <Box sx={{ minHeight: "100dvh", py: 8 }}>
             <Container maxWidth="lg">
-                {/* Título principal */}
+                {/* Main Title */}
                 <MotionBox
                     initial="hidden"
                     animate="visible"
@@ -78,7 +98,7 @@ const ServiceTres = () => {
                     </Typography>
                 </MotionBox>
 
-                {/* Equipos de Supresión */}
+                {/* Suppression Equipment */}
                 <MotionBox
                     initial="hidden"
                     animate="visible"
@@ -181,7 +201,7 @@ const ServiceTres = () => {
                     </MotionCard>
                 </Box>
 
-                {/* Redes Contra Incendio */}
+                {/* Fire Networks */}
                 <Box mt={8}>
                     <MotionBox
                         initial="hidden"
@@ -286,7 +306,7 @@ const ServiceTres = () => {
                     </Box>
                 </Box>
 
-                {/* Sistemas de Supresión en Agua */}
+                {/* Industrial Applications */}
                 <Box mt={8}>
                     <MotionBox
                         initial="hidden"

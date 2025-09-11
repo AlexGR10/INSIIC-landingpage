@@ -1,3 +1,11 @@
+/**
+ * @file SoldaduraPaileria.tsx
+ * @brief This component renders the service page for "Soldadura Especial y Pailería Industrial" (Special Welding and Industrial Boilermaking).
+ *
+ * It is divided into four main sections: Estructuras en Acero (Steel Structures), Escaleras Especializadas (Specialized Stairs), Puertas y Portones (Doors and Gates), and Trabajos Especiales (Special Jobs).
+ * The component uses framer-motion for entry animations.
+ */
+
 import {
     Box,
     Card,
@@ -29,6 +37,12 @@ import Terraza from "../../assets/images/soldaduraEspecial/terraza.jpeg";
 const MotionCard = motion(Card);
 const MotionBox = motion(Box);
 
+/**
+ * @function fadeInFrom
+ * @brief A utility function to create fade-in animations from a specified direction.
+ * @param {"left" | "right"} direction - The direction from which to fade in.
+ * @returns {object} The animation variants for framer-motion.
+ */
 const fadeInFrom = (direction: "left" | "right") => ({
     hidden: { opacity: 0, x: direction === "left" ? -50 : 50 },
     visible: {
@@ -53,13 +67,19 @@ Quedo atento a su respuesta.
 
 Saludos cordiales.`;
 
+/**
+ * @function ServiceTres
+ * @brief A functional component that renders the Special Welding and Industrial Boilermaking service page.
+ *
+ * @returns {JSX.Element} The rendered service page.
+ */
 const ServiceTres = () => {
     const theme = useTheme();
 
     return (
         <Box sx={{ minHeight: "100dvh", py: 8 }}>
             <Container maxWidth="lg">
-                {/* Título principal */}
+                {/* Main Title */}
                 <MotionBox
                     initial="hidden"
                     animate="visible"
@@ -85,7 +105,7 @@ const ServiceTres = () => {
                     </Typography>
                 </MotionBox>
 
-                {/* Estructuras en Acero */}
+                {/* Steel Structures */}
                 <MotionBox
                     initial="hidden"
                     animate="visible"
@@ -188,7 +208,7 @@ const ServiceTres = () => {
                     </MotionCard>
                 </Box>
 
-                {/* Escaleras Especializadas */}
+                {/* Specialized Stairs */}
                 <MotionBox
                     initial="hidden"
                     animate="visible"
@@ -291,7 +311,7 @@ const ServiceTres = () => {
                     </MotionCard>
                 </Box>
 
-                {/* Puertas y Portones */}
+                {/* Doors and Gates */}
                 <MotionBox
                     initial="hidden"
                     animate="visible"
@@ -394,7 +414,7 @@ const ServiceTres = () => {
                     </MotionCard>
                 </Box>
 
-                {/* Trabajos Especiales */}
+                {/* Special Jobs */}
                 <MotionBox
                     initial="hidden"
                     animate="visible"
@@ -497,7 +517,7 @@ const ServiceTres = () => {
                     </MotionCard>
                 </Box>
 
-                {/* Botón de contacto con mejor espaciado */}
+                {/* Contact button with improved spacing */}
                 <Box 
                     sx={{ 
                         display: "flex", 

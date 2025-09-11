@@ -1,3 +1,12 @@
+/**
+ * @file Navbar.tsx
+ * @brief This component renders the navigation bar of the application.
+ *
+ * It is responsive and displays a full navbar on desktop and a hamburger menu on mobile.
+ * The navbar includes the logo, navigation links, and a contact button.
+ * The mobile view uses a drawer for navigation.
+ */
+
 import {
   useTheme,
   useMediaQuery,
@@ -18,6 +27,12 @@ import Logo from "../assets/logo.jpeg";
 import LINKS from "../config/links";
 import EmailButton from "./EmailButton";
 
+/**
+ * @function Navbar
+ * @brief A functional component that renders the application's navigation bar.
+ *
+ * @returns {JSX.Element} The rendered navbar component.
+ */
 const Navbar = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
@@ -25,11 +40,20 @@ const Navbar = () => {
 
   const [openDrawer, setOpenDrawer] = useState(false);
 
+  /**
+   * @function handleMenuClick
+   * @brief Navigates to the specified path and closes the drawer.
+   * @param {string} path - The path to navigate to.
+   */
   const handleMenuClick = (path: string) => {
     navigate(path);
     setOpenDrawer(false);
   };
 
+  /**
+   * @function handleLogoClick
+   * @brief Navigates to the home page.
+   */
   const handleLogoClick = () => {
     navigate("/");
   };

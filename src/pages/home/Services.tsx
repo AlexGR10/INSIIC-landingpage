@@ -1,3 +1,11 @@
+/**
+ * @file Services.tsx
+ * @brief This component renders the services section of the home page.
+ *
+ * It displays a list of services with titles, descriptions, and images in a card layout.
+ * Each card links to a dedicated service page.
+ */
+
 import {
   Box,
   Typography,
@@ -10,12 +18,18 @@ import LogoIncendio from "../../assets/images/contraIncendio/Logo.jpeg"
 import LogoAire from "../../assets/images/aire/Logo.webp"
 import LogoSoldadura from "../../assets/images/soldaduraEspecial/Logo.jpeg";
 import LINKS from "../../config/links";
-import EmailButton from "../../components/EmailButton"; // Importar EmailButton
+import EmailButton from "../../components/EmailButton";
 
+/**
+ * @function Services
+ * @brief A functional component that renders the services section.
+ *
+ * @returns {JSX.Element} The rendered services section.
+ */
 const Services = () => {
   const theme = useTheme();
 
-  // Mensaje para el botón de contacto
+  // Message for the contact button
   const servicesContactMessage = `Estoy interesado en los servicios de INSIIC. Me gustaría recibir más información sobre:
 
 - Sistemas de Aire
@@ -28,6 +42,10 @@ Quedo atento a su respuesta.
 
 Saludos cordiales.`;
 
+  /**
+   * @const features
+   * @brief An array of objects representing the company's services.
+   */
   const features = [    
     {
       title: "Sistemas de Todo Tipo en Aire para Acondicionar",
@@ -63,7 +81,7 @@ Saludos cordiales.`;
         overflow: "hidden",
       }}
     >
-      {/* Background overlay con opacidad */}
+      {/* Background overlay with opacity */}
       <Box
         sx={{
           position: "absolute",
@@ -77,7 +95,7 @@ Saludos cordiales.`;
         }}
       />
 
-      {/* Contenido encima del fondo */}
+      {/* Content on top of the background */}
       <Box
         sx={{
           position: "relative",
@@ -91,7 +109,7 @@ Saludos cordiales.`;
           gap: 0,
         }}
       >
-        {/* Icon box - ocupa 30% y todo el alto */}
+        {/* Icon box - takes up 30% and full height */}
         <Box
           sx={{
             flexBasis: { md: "30%" },
@@ -111,7 +129,7 @@ Saludos cordiales.`;
           />
         </Box>
 
-        {/* Texto */}
+        {/* Text */}
         <Box
           sx={{
             flex: 1,
@@ -175,7 +193,7 @@ Saludos cordiales.`;
               },
             }}
           >
-            {/* Contenedor de imagen cuadrado */}
+            {/* Square image container */}
             <Box
               sx={{
                 width: "100%",
@@ -201,7 +219,7 @@ Saludos cordiales.`;
                   }}
                 />
               )}
-              {/* Para la card sin imagen, mostrar un ícono por defecto */}
+              {/* For cards without an image, display a default icon */}
               {!item.img && (
                 <BuildCircleIcon
                   sx={{
@@ -212,7 +230,7 @@ Saludos cordiales.`;
               )}
             </Box>
             
-            {/* Contenido de texto con padding */}
+            {/* Text content with padding */}
             <Box sx={{ p: 3, width: "100%" }}>
               <Typography
                 variant="body1"
@@ -236,7 +254,7 @@ Saludos cordiales.`;
         ))}
       </Box>
 
-      {/* Botón CTA - Reemplazado por EmailButton */}
+      {/* CTA Button - Replaced with EmailButton */}
       <EmailButton
         message={servicesContactMessage}
         subject="Solicitud de Asesoría - Servicios INSIIC"

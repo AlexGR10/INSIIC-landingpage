@@ -1,7 +1,21 @@
+/**
+ * @file CallToAction.tsx
+ * @brief This component renders a call to action section to encourage user engagement.
+ *
+ * It features a title, a descriptive text, and a prominent contact button.
+ * The component uses framer-motion for animations to attract attention.
+ */
+
 import { Box, Typography, useTheme } from "@mui/material";
 import { motion } from "framer-motion";
 import EmailButton from "../../components/EmailButton";
 
+/**
+ * @function CallToAction
+ * @brief A functional component that renders the call to action section.
+ *
+ * @returns {JSX.Element} The rendered call to action section.
+ */
 const CallToAction = () => {
   const theme = useTheme();
 
@@ -29,7 +43,7 @@ Saludos cordiales.`;
         overflow: "hidden",
       }}
     >
-      {/* Elemento decorativo de fondo */}
+      {/* Decorative background element */}
       <Box
         sx={{
           position: "absolute",
@@ -98,7 +112,7 @@ Saludos cordiales.`;
           En INSIIC, conectamos tecnología con ambientes seguros. Da el siguiente paso con nosotros y transforma tu espacio industrial.
         </Typography>
 
-        {/* Contenedor de botones */}
+        {/* Button container */}
         <Box
           component={motion.div}
           initial={{ opacity: 0, scale: 0.9 }}
@@ -129,7 +143,7 @@ Saludos cordiales.`;
           />
         </Box>
 
-        {/* Información adicional sutil */}
+        {/* Subtle additional information */}
         <Typography
           component={motion.p}
           initial={{ opacity: 0 }}

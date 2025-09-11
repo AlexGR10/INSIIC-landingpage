@@ -1,3 +1,12 @@
+/**
+ * @file EmailButton.tsx
+ * @brief This component provides a button that opens a dialog to send an email.
+ *
+ * It includes a form with fields for name, email, phone, and message.
+ * The component uses EmailJS to send emails and includes rate limiting to prevent abuse.
+ * It also features a sophisticated UI with transitions, alerts, and a countdown timer for the rate limit.
+ */
+
 import { 
   Button, 
   Dialog, 
@@ -23,11 +32,14 @@ import MessageIcon from "@mui/icons-material/Message";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import ErrorIcon from "@mui/icons-material/Error";
 import TimerIcon from "@mui/icons-material/Timer";
-import { useState, useEffect } from "react";
+import { useState, useEffect, forwardRef } from "react";
 import emailjs from '@emailjs/browser';
 import type { TransitionProps } from '@mui/material/transitions';
-import { forwardRef } from 'react';
 
+/**
+ * @interface EmailButtonProps
+ * @brief Props for the EmailButton component.
+ */
 interface EmailButtonProps {
   message: string;
   subject?: string;
@@ -42,13 +54,20 @@ interface EmailButtonProps {
   sx?: any;
 }
 
-// Rate limiting configuration
+/**
+ * @const RATE_LIMIT_CONFIG
+ * @brief Configuration for the email rate limiting feature.
+ */
 const RATE_LIMIT_CONFIG = {
-  maxEmails: 3, // máximo 3 emails
-  timeWindow: 60 * 60 * 1000, // por hora (1 hora en ms)
-  cooldownTime: 5 * 60 * 1000, // 5 minutos de cooldown después de enviar
+  maxEmails: 3, // Maximum 3 emails
+  timeWindow: 60 * 60 * 1000, // Per hour (1 hour in ms)
+  cooldownTime: 5 * 60 * 1000, // 5 minutes of cooldown after sending
 };
 
+/**
+ * @function SlideTransition
+ * @brief A slide transition for the dialog.
+ */
 const SlideTransition = forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
@@ -58,27 +77,41 @@ const SlideTransition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-// Utility functions for rate limiting
+/**
+ * @function getRateLimitData
+ * @brief Retrieves rate limit data from local storage.
+ * @returns {object} The rate limit data.
+ */
 const getRateLimitData = () => {
   const stored = localStorage.getItem('email_rate_limit');
   if (!stored) return { count: 0, timestamps: [], lastSent: 0 };
   return JSON.parse(stored);
 };
 
+/**
+ * @function updateRateLimitData
+ * @brief Updates rate limit data in local storage.
+ * @param {any} newData - The new rate limit data.
+ */
 const updateRateLimitData = (newData: any) => {
   localStorage.setItem('email_rate_limit', JSON.stringify(newData));
 };
 
+/**
+ * @function canSendEmail
+ * @brief Checks if an email can be sent based on the rate limit.
+ * @returns {object} An object indicating if the email can be sent and the reason if not.
+ */
 const canSendEmail = () => {
   const data = getRateLimitData();
   const now = Date.now();
   
-  // Limpiar timestamps antiguos (fuera de la ventana de tiempo)
+  // Clean up old timestamps
   const validTimestamps = data.timestamps.filter(
     (timestamp: number) => now - timestamp < RATE_LIMIT_CONFIG.timeWindow
   );
   
-  // Verificar cooldown
+  // Check cooldown
   const timeSinceLastEmail = now - data.lastSent;
   if (timeSinceLastEmail < RATE_LIMIT_CONFIG.cooldownTime) {
     return {
@@ -88,7 +121,7 @@ const canSendEmail = () => {
     };
   }
   
-  // Verificar límite de emails
+  // Check email limit
   if (validTimestamps.length >= RATE_LIMIT_CONFIG.maxEmails) {
     return {
       canSend: false,
@@ -100,16 +133,20 @@ const canSendEmail = () => {
   return { canSend: true, reason: null, waitTime: 0 };
 };
 
+/**
+ * @function recordEmailSent
+ * @brief Records that an email has been sent for rate limiting purposes.
+ */
 const recordEmailSent = () => {
   const data = getRateLimitData();
   const now = Date.now();
   
-  // Limpiar timestamps antiguos
+  // Clean up old timestamps
   const validTimestamps = data.timestamps.filter(
     (timestamp: number) => now - timestamp < RATE_LIMIT_CONFIG.timeWindow
   );
   
-  // Agregar nuevo timestamp
+  // Add new timestamp
   validTimestamps.push(now);
   
   updateRateLimitData({
@@ -119,6 +156,12 @@ const recordEmailSent = () => {
   });
 };
 
+/**
+ * @function EmailButton
+ * @brief A React functional component that renders a button to open an email dialog.
+ * @param {EmailButtonProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered component.
+ */
 const EmailButton: React.FC<EmailButtonProps> = ({
   message,
   subject = "Consulta desde INSIIC",
@@ -144,7 +187,7 @@ const EmailButton: React.FC<EmailButtonProps> = ({
   const [rateLimitInfo, setRateLimitInfo] = useState<any>(null);
   const [countdown, setCountdown] = useState(0);
 
-  // Verificar rate limit al abrir
+  // Check rate limit on dialog open
   useEffect(() => {
     if (open) {
       const limitCheck = canSendEmail();
@@ -156,7 +199,7 @@ const EmailButton: React.FC<EmailButtonProps> = ({
     }
   }, [open]);
 
-  // Countdown timer
+  // Countdown timer for rate limit
   useEffect(() => {
     if (countdown > 0) {
       const timer = setTimeout(() => {
@@ -186,7 +229,7 @@ const EmailButton: React.FC<EmailButtonProps> = ({
   };
 
   const handleSubmit = async () => {
-    // Verificar rate limit antes de enviar
+    // Verify rate limit before sending
     const limitCheck = canSendEmail();
     if (!limitCheck.canSend) {
       setStatus('rate_limited');
@@ -199,7 +242,7 @@ const EmailButton: React.FC<EmailButtonProps> = ({
     setStatus('idle');
 
     try {
-      // Configuración de EmailJS
+      // EmailJS configuration
       const serviceID = 'service_gh5qcag'; 
       const templateID = 'template_fo0rgg6';  
       const publicKey = 'AcLspHtiSBQB0TdQP';
@@ -214,13 +257,13 @@ const EmailButton: React.FC<EmailButtonProps> = ({
 
       await emailjs.send(serviceID, templateID, templateParams, publicKey);
       
-      // Registrar email enviado
+      // Record email sent
       recordEmailSent();
       
       setStatus('success');
       setTimeout(() => {
         handleClose();
-        // Resetear formulario
+        // Reset form
         setFormData({
           nombre: '',
           email: '',

@@ -1,6 +1,20 @@
+/**
+ * @file Footer.tsx
+ * @brief This component renders the footer of the application.
+ *
+ * The footer includes the company's brand name, social media links, and a signature.
+ * It is styled using Material-UI's Box, Typography, Link, and IconButton components.
+ */
+
 import { Box, Typography, Link, IconButton, useTheme } from "@mui/material";
 import { Facebook, Storefront, WhatsApp } from "@mui/icons-material";
 
+/**
+ * @function Footer
+ * @brief A functional component that renders the application footer.
+ *
+ * @returns {JSX.Element} The rendered footer component.
+ */
 const Footer = () => {
   const theme = useTheme();
 
@@ -22,7 +36,7 @@ const Footer = () => {
         zIndex: theme.zIndex.appBar,
       }}
     >
-      {/* Marca empresa */}
+      {/* Company brand */}
       <Typography
         variant="body1"
         sx={{
@@ -35,7 +49,7 @@ const Footer = () => {
         © {new Date().getFullYear()} INSIIC — Sistemas Integrales para la Industria del Centro
       </Typography>
 
-      {/* Redes sociales */}
+      {/* Social media links */}
       <Box
         sx={{
           display: "flex",
@@ -101,7 +115,7 @@ const Footer = () => {
         </IconButton>
       </Box>
 
-      {/* Firma */}
+      {/* Signature */}
       <Typography
         variant="body2"
         sx={{
