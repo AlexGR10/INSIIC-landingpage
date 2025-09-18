@@ -7,14 +7,14 @@
  * It also features a sophisticated UI with transitions, alerts, and a countdown timer for the rate limit.
  */
 
-import { 
-  Button, 
-  Dialog, 
-  DialogTitle, 
-  DialogContent, 
-  DialogActions, 
-  TextField, 
-  Box, 
+import {
+  Button,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  TextField,
+  Box,
   IconButton,
   Typography,
   Alert,
@@ -105,12 +105,12 @@ const updateRateLimitData = (newData: any) => {
 const canSendEmail = () => {
   const data = getRateLimitData();
   const now = Date.now();
-  
+
   // Clean up old timestamps
   const validTimestamps = data.timestamps.filter(
     (timestamp: number) => now - timestamp < RATE_LIMIT_CONFIG.timeWindow
   );
-  
+
   // Check cooldown
   const timeSinceLastEmail = now - data.lastSent;
   if (timeSinceLastEmail < RATE_LIMIT_CONFIG.cooldownTime) {
@@ -120,7 +120,7 @@ const canSendEmail = () => {
       waitTime: RATE_LIMIT_CONFIG.cooldownTime - timeSinceLastEmail
     };
   }
-  
+
   // Check email limit
   if (validTimestamps.length >= RATE_LIMIT_CONFIG.maxEmails) {
     return {
@@ -129,7 +129,7 @@ const canSendEmail = () => {
       waitTime: RATE_LIMIT_CONFIG.timeWindow - (now - validTimestamps[0])
     };
   }
-  
+
   return { canSend: true, reason: null, waitTime: 0 };
 };
 
@@ -140,15 +140,15 @@ const canSendEmail = () => {
 const recordEmailSent = () => {
   const data = getRateLimitData();
   const now = Date.now();
-  
+
   // Clean up old timestamps
   const validTimestamps = data.timestamps.filter(
     (timestamp: number) => now - timestamp < RATE_LIMIT_CONFIG.timeWindow
   );
-  
+
   // Add new timestamp
   validTimestamps.push(now);
-  
+
   updateRateLimitData({
     count: validTimestamps.length,
     timestamps: validTimestamps,
@@ -243,9 +243,15 @@ const EmailButton: React.FC<EmailButtonProps> = ({
 
     try {
       // EmailJS configuration
-      const serviceID = 'service_gh5qcag'; 
-      const templateID = 'template_fo0rgg6';  
-      const publicKey = 'AcLspHtiSBQB0TdQP';
+      const serviceID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+      // Validación de variables de entorno
+      if (!serviceID || !templateID || !publicKey) {
+        console.error('EmailJS configuration missing. Please check your environment variables.');
+        return;
+      }
 
       const templateParams = {
         subject: subject,
@@ -256,10 +262,10 @@ const EmailButton: React.FC<EmailButtonProps> = ({
       };
 
       await emailjs.send(serviceID, templateID, templateParams, publicKey);
-      
+
       // Record email sent
       recordEmailSent();
-      
+
       setStatus('success');
       setTimeout(() => {
         handleClose();
@@ -304,11 +310,11 @@ const EmailButton: React.FC<EmailButtonProps> = ({
         disabled={disabled}
         className={className}
         sx={{
-          boxShadow: variant === 'gradient' 
+          boxShadow: variant === 'gradient'
             ? '0 8px 25px rgba(38, 89, 168, 0.3)'
             : undefined,
           '&:hover': {
-            boxShadow: variant === 'gradient' 
+            boxShadow: variant === 'gradient'
               ? '0 12px 35px rgba(38, 89, 168, 0.4)'
               : undefined,
             transform: 'translateY(-2px)',
@@ -320,8 +326,8 @@ const EmailButton: React.FC<EmailButtonProps> = ({
         {buttonText}
       </Button>
 
-      <Dialog 
-        open={open} 
+      <Dialog
+        open={open}
         onClose={handleClose}
         maxWidth="sm"
         fullWidth
@@ -353,12 +359,12 @@ const EmailButton: React.FC<EmailButtonProps> = ({
           }
         }}
       >
-        <DialogTitle sx={{ 
-          pt: 4, 
-          pb: 2, 
+        <DialogTitle sx={{
+          pt: 4,
+          pb: 2,
           px: 4,
-          display: 'flex', 
-          justifyContent: 'space-between', 
+          display: 'flex',
+          justifyContent: 'space-between',
           alignItems: 'center',
           background: 'transparent',
         }}>
@@ -367,7 +373,7 @@ const EmailButton: React.FC<EmailButtonProps> = ({
               width: 48,
               height: 48,
               borderRadius: '12px',
-              background: isRateLimited 
+              background: isRateLimited
                 ? 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%)'
                 : 'linear-gradient(135deg, #2659A8 0%, #ED2A38 100%)',
               display: 'flex',
@@ -382,28 +388,28 @@ const EmailButton: React.FC<EmailButtonProps> = ({
               )}
             </Box>
             <Box>
-              <Typography variant="h6" component="div" sx={{ 
-                fontWeight: 700, 
+              <Typography variant="h6" component="div" sx={{
+                fontWeight: 700,
                 color: isRateLimited ? '#FF6B35' : '#2659A8',
                 fontSize: '1.3rem',
                 lineHeight: 1.2,
               }}>
                 {isRateLimited ? 'Límite Alcanzado' : 'Contactar a INSIIC'}
               </Typography>
-              <Typography variant="body2" sx={{ 
+              <Typography variant="body2" sx={{
                 color: '#78797B',
                 fontSize: '0.85rem',
                 mt: 0.5
               }}>
-                {isRateLimited 
+                {isRateLimited
                   ? `Espera ${formatTime(countdown)} para enviar otro email`
                   : 'Nos pondremos en contacto contigo pronto'
                 }
               </Typography>
             </Box>
           </Box>
-          <IconButton 
-            onClick={handleClose} 
+          <IconButton
+            onClick={handleClose}
             size="small"
             sx={{
               backgroundColor: 'rgba(120, 121, 123, 0.1)',
@@ -425,9 +431,9 @@ const EmailButton: React.FC<EmailButtonProps> = ({
           <Fade in={isRateLimited} timeout={300}>
             <Box>
               {isRateLimited && (
-                <Alert 
-                  severity="warning" 
-                  sx={{ 
+                <Alert
+                  severity="warning"
+                  sx={{
                     mb: 3,
                     borderRadius: 2,
                     backgroundColor: 'rgba(255, 152, 0, 0.05)',
@@ -439,21 +445,21 @@ const EmailButton: React.FC<EmailButtonProps> = ({
                   icon={<TimerIcon />}
                 >
                   <Typography sx={{ fontWeight: 600, color: '#F57C00' }}>
-                    {rateLimitInfo?.reason === 'cooldown' 
+                    {rateLimitInfo?.reason === 'cooldown'
                       ? 'Espera antes de enviar otro mensaje'
                       : 'Has alcanzado el límite de mensajes'
                     }
                   </Typography>
                   <Typography variant="body2" sx={{ color: '#FF9800', mt: 0.5 }}>
-                    {rateLimitInfo?.reason === 'cooldown' 
+                    {rateLimitInfo?.reason === 'cooldown'
                       ? `Puedes enviar otro mensaje en ${formatTime(countdown)}`
                       : `Has enviado ${RATE_LIMIT_CONFIG.maxEmails} mensajes en la última hora. Intenta en ${formatTime(countdown)}`
                     }
                   </Typography>
                   {countdown > 0 && (
                     <Box sx={{ mt: 2 }}>
-                      <LinearProgress 
-                        variant="determinate" 
+                      <LinearProgress
+                        variant="determinate"
                         value={100 - (countdown / (rateLimitInfo?.waitTime / 1000)) * 100}
                         sx={{
                           height: 6,
@@ -476,9 +482,9 @@ const EmailButton: React.FC<EmailButtonProps> = ({
           <Fade in={status === 'success'} timeout={300}>
             <Box>
               {status === 'success' && (
-                <Alert 
-                  severity="success" 
-                  sx={{ 
+                <Alert
+                  severity="success"
+                  sx={{
                     mb: 3,
                     borderRadius: 2,
                     backgroundColor: 'rgba(76, 175, 80, 0.05)',
@@ -499,14 +505,14 @@ const EmailButton: React.FC<EmailButtonProps> = ({
               )}
             </Box>
           </Fade>
-          
+
           {/* Error Alert */}
           <Fade in={status === 'error'} timeout={300}>
             <Box>
               {status === 'error' && (
-                <Alert 
-                  severity="error" 
-                  sx={{ 
+                <Alert
+                  severity="error"
+                  sx={{
                     mb: 3,
                     borderRadius: 2,
                     backgroundColor: 'rgba(244, 67, 54, 0.05)',
@@ -656,8 +662,8 @@ const EmailButton: React.FC<EmailButtonProps> = ({
               variant="outlined"
               InputProps={{
                 startAdornment: (
-                  <MessageIcon sx={{ 
-                    mr: 1, 
+                  <MessageIcon sx={{
+                    mr: 1,
                     color: '#78797B',
                     alignSelf: 'flex-start',
                     mt: 1
@@ -696,8 +702,8 @@ const EmailButton: React.FC<EmailButtonProps> = ({
         <Divider sx={{ mx: 2, backgroundColor: 'rgba(38, 89, 168, 0.1)' }} />
 
         <DialogActions sx={{ px: 4, py: 3, gap: 2 }}>
-          <Button 
-            onClick={handleClose} 
+          <Button
+            onClick={handleClose}
             variant="outlined"
             disabled={sending}
             sx={{
@@ -717,14 +723,14 @@ const EmailButton: React.FC<EmailButtonProps> = ({
           >
             Cancelar
           </Button>
-          <Button 
+          <Button
             onClick={handleSubmit}
             variant="gradient"
             disabled={!isFormValid || sending || isRateLimited}
             startIcon={sending ? (
-              <CircularProgress 
-                size={18} 
-                sx={{ color: 'white !important' }} 
+              <CircularProgress
+                size={18}
+                sx={{ color: 'white !important' }}
               />
             ) : isRateLimited ? (
               <TimerIcon />
@@ -737,10 +743,10 @@ const EmailButton: React.FC<EmailButtonProps> = ({
               minWidth: 160,
               fontWeight: 700,
               fontSize: '0.95rem',
-              boxShadow: isRateLimited 
+              boxShadow: isRateLimited
                 ? '0 8px 25px rgba(255, 107, 53, 0.3)'
                 : '0 8px 25px rgba(38, 89, 168, 0.3)',
-              backgroundColor: isRateLimited 
+              backgroundColor: isRateLimited
                 ? 'linear-gradient(135deg, #FF6B35 0%, #F7931E 100%) !important'
                 : undefined,
               '&:hover': {
@@ -756,9 +762,9 @@ const EmailButton: React.FC<EmailButtonProps> = ({
               transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           >
-            {sending ? 'Enviando...' : 
-             isRateLimited ? `Espera ${formatTime(countdown)}` :
-             'Enviar Mensaje'}
+            {sending ? 'Enviando...' :
+              isRateLimited ? `Espera ${formatTime(countdown)}` :
+                'Enviar Mensaje'}
           </Button>
         </DialogActions>
       </Dialog>

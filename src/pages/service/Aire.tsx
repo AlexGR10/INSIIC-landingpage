@@ -27,7 +27,6 @@ import EquipoHumedo from "../../assets/images/aire/equipoHumedo.jpeg";
 import Extractor36 from "../../assets/images/aire/extractor36.jpeg";
 import Extractor18 from "../../assets/images/aire/extractor18.jpeg";
 import DucteriaRedonda from "../../assets/images/aire/ducteriaRedonda.jpeg";
-import DucteriaCuadrada from "../../assets/images/aire/ducteriaCuadrada.jpeg";
 import Campana from "../../assets/images/aire/campana.jpeg";
 import Minisplit from "../../assets/images/aire/minisplit.jpeg";
 import AireLavado from "../../assets/images/aire/aireLavado.jpeg";
