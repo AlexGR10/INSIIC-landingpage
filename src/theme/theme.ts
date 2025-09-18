@@ -11,7 +11,7 @@ const theme = createTheme({
   palette: {
     mode: "light",
     primary: {
-      main: "#2659A8", // Branding blue
+      main: "rgba(38, 89, 168, 1)", // Branding blue
     },
     secondary: {
       main: "#ED2A38", // Accent red

@@ -13,8 +13,8 @@ import LogoSTPS from "../../assets/images/certificados/STPS.jfif";
 import LogoAnsul from "../../assets/images/certificados/ANSUL.png";
 
 // Import PDFs
-import NFPACertificacion from "../../assets/images/certificados/NFPA-Certificacion.pdf";
-import NFPAConstancia from "../../assets/images/certificados/NFPAConstancia.pdf";
+import NFPACertificacion from "../../assets/images/certificados/NFPA-Certificacion-WaterMark.pdf";
+import NFPAConstancia from "../../assets/images/certificados/NFPAConstancia-WaterMark.pdf";
 
 /**
  * @function AboutUs
